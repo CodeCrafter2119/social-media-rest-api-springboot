@@ -4,7 +4,7 @@ A robust and secure RESTful API for a social media platform, enabling user manag
 
 ---
 
-## ✨ Features
+## Features
 
 - **User Management**:
   - Create, retrieve, update, and delete users.
@@ -27,26 +27,61 @@ A robust and secure RESTful API for a social media platform, enabling user manag
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
-- **Backend**: Java 17, Spring Boot 3.x, Spring Security, Hibernate/JPA
+- **Backend**: Java 23, Spring Boot 3.4.3, Spring Security, Hibernate/JPA
 - **Database**: MySQL
-- **Tools**: Docker, Maven, Postman (for API testing)
-- **Libraries**: Lombok, Spring Validation, Spring Data JPA
+- **Tools**: Docker, Maven, Talent API tester (for API testing)
+- **Libraries**: Spring Validation, Spring Data JPA
 
 ---
-
-## 🚀 Getting Started
-
-### Prerequisites
-- Java 17+
-- MySQL 8.x
-- Docker (optional)
-- Maven
 
 ### Installation
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/your-username/social-media-rest-api.git
+   git clone https://github.com/username/social-media-rest-api.git
    cd social-media-rest-api
+
+
+
+### Configure Database:
+
+Create a MySQL database named social_media_db.
+
+Update application.properties with credentials:
+
+properties::
+
+spring.datasource.url=jdbc:mysql://localhost:3307/social_media_db
+spring.datasource.username=username
+spring.datasource.password=123
+
+### Build & Run:
+mvn clean install
+mvn spring-boot:run
+The API will start at http://localhost:8080.
+
+### 📚 API Documentation
+Users Endpoints
+Endpoint	Method	Description
+/jpa/users	GET	Retrieve all users
+/jpa/users	POST	Create a new user
+/jpa/users/{id}	GET	Get user by ID
+/jpa/users/{id}	DELETE	Delete a user by ID
+Posts Endpoints
+Endpoint	Method	Description
+/jpa/users/{userId}/posts	GET	Get all posts by a user
+/jpa/users/{userId}/posts	POST	Create a new post for a user
+/jpa/users/{userId}/posts/{postId}	DELETE	Delete a specific post
+
+
+### Docker Support
+Build the Docker Image:
+
+docker build -t social-media-api .
+
+Run the Container:
+
+docker run -p 3307:3306 social-media-api
+
